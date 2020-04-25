@@ -6,9 +6,8 @@ networks:
 
 services:
 
-#https://hub.docker.com/_/nginx
-  nginx:
-    image: nginx:1.16.1
+  nginx: # https://hub.docker.com/_/nginx
+    image: nginx:1.18.0
     container_name: nginx
     restart: unless-stopped
     networks:
@@ -23,9 +22,8 @@ services:
       - "443:443"
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
 
-#https://hub.docker.com/r/certbot/certbot
-  certbot:
-    image: certbot/certbot:v0.39.0
+  certbot: # https://hub.docker.com/r/certbot/certbot
+    image: certbot/certbot:v1.3.0
     container_name: certbot
     restart: unless-stopped
     volumes:
