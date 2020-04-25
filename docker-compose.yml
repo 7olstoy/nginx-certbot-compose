@@ -15,7 +15,7 @@ services:
       - nginx_proxy
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./nginx/.htpasswd:/etc/nginx/.htpasswd
+      #- ./nginx/.htpasswd:/etc/nginx/.htpasswd
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
     ports:
