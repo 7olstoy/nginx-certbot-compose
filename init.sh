@@ -14,13 +14,16 @@ for arg in "$@" ; do
         --service*|-s=*)
             service="${arg#*=}"
             ;;
+        --port*|-p=*)
+            port="${arg#*=}"
+            ;;
         *)
             ;;
     esac
 done
 
 if [[ -z "${domains}" ]] || [[ -z "${email}" ]] || [[ -z "${service}" ]]; then
-    echo "Please use --domains=, --email= and --service= options"
+    echo "Please use --domains=, --email=, --service= and --port= options"
     exit
 fi
 
@@ -74,7 +77,7 @@ for domain in "${domains[@]}"; do
     location / {
         resolver 127.0.0.11 valid=30s;
         set $docker HELLO_SERVICE;
-        proxy_pass http://$docker;
+        proxy_pass http://$docker:$port;
         proxy_set_header    Host                $http_host;
         proxy_set_header    X-Real-IP           $remote_addr;
         proxy_set_header    X-Forwarded-For     $proxy_add_x_forwarded_for;
