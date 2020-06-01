@@ -9,7 +9,7 @@ Add new docker network for use NGINX with other containers:
 
 Run script with your parameters:
 
-* one ore more domain names;
+* one or more domain names;
 * your email for SSL notification;
 * your service IP or name for proxy_pass:
 
